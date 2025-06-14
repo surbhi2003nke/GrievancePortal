@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "raised_by": {"type": "string", "format": "uuid"},
+    "subject": {"type": "string", "maxLength": 255},
+    "description": {"type": "string"},
+    "issue_type": {"type": "string"},
+    "campus_id": {"type": "integer"},
+    "branch_id": {"type": "integer"},
+    "priority": {"type": "string", "enum": ["LOW","MEDIUM","HIGH","CRITICAL"]}
+  },
+  "required": ["raised_by","subject","description","issue_type","campus_id","branch_id","priority"]
+}
