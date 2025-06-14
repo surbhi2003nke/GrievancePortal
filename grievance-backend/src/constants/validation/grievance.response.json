@@ -1,0 +1,44 @@
+{
+  "type": "object",
+  "properties": {
+    "responseId": {
+      "type": "integer",
+      "description": "Unique identifier for the response"
+    },
+    "note": {
+      "type": "string",
+      "description": "Text description of the response"
+    },
+    "status": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Status of the response"
+    },
+    "stage": {
+      "type": "string",
+      "maxLength": 50,
+      "description": "Current stage of the grievance"
+    },
+    "dateTime": {
+      "type": "integer",
+      "description": "Unix timestamp of the response"
+    },
+    "currentStatus": {
+      "type": "string",
+      "maxLength": 255,
+      "description": "Current status description"
+    },
+    "redirect": {
+      "type": "string",
+      "description": "Redirection information or next step"
+    }
+  },
+  "required": [
+    "responseId",
+    "note",
+    "status",
+    "stage",
+    "dateTime",
+    "currentStatus"
+  ]
+}
