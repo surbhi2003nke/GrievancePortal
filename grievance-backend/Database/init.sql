@@ -1,9 +1,13 @@
 -- Database initialization script for DSEU Grievance Project 2025
 
 -- Drop tables if they exist (for fresh setup)
-DROP TABLE IF EXISTS Admin CASCADE;
 DROP TABLE IF EXISTS PersonalInfo CASCADE;
 DROP TABLE IF EXISTS AcademicInfo CASCADE;
+DROP TABLE IF EXISTS Attachment CASCADE;
+DROP TABLE IF EXISTS AdminInfo CASCADE;
+DROP TABLE IF EXISTS GrievanceHistory CASCADE;
+DROP TABLE IF EXISTS Grievance CASCADE;
+DROP TABLE IF EXISTS Response CASCADE;
 
 
 -- Create PersonalInfo table
@@ -62,36 +66,58 @@ CREATE TABLE Admin (
 
 -- create Grievance table
 CREATE TABLE Grievance (
-    id SERIAL PRIMARY KEY,
-    RollNo VARCHAR(50) NOT NULL,
-    Title VARCHAR(255) NOT NULL,
-    Description TEXT NOT NULL,
-    Category VARCHAR(50) NOT NULL,
+   id SERIAL PRIMARY KEY,
+   Issuse_Id VARCHAR(50) NOT NULL,
+   RollNo VARCHAR(50) NOT NULL,
+   Campus VARCHAR(50) NOT NULL,
+   Subject VARCHAR(255) NOT NULL,
+   Description TEXT NOT NULL,
+   Issuse_type VARCHAR(50) NOT NULL,
     Status VARCHAR(50) DEFAULT 'pending',
-    CreatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
-    UpdatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
-    CONSTRAINT fk_grievance_rollno FOREIGN KEY (RollNo) REFERENCES PersonalInfo(RollNo) ON DELETE CASCADE
+    Attachment TEXT, --it can be null
+    Date TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),   
+    CONSTRAINT fk_grievance_rollno FOREIGN KEY (RollNo) REFERENCES PersonalInfo(RollNo) ON DELETE CASCADE 
 );
 
 --create Response table
 CREATE TABLE Response (
     id SERIAL PRIMARY KEY,
-    GrievanceId INTEGER NOT NULL,
-    AdminId INTEGER NOT NULL,
+    Issuse_Id INTEGER NOT NULL,
     ResponseText TEXT NOT NULL,
-    CreatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
-    UpdatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
-    CONSTRAINT fk_response_grievance FOREIGN KEY (GrievanceId) REFERENCES Grievance(id) ON DELETE CASCADE,
-    CONSTRAINT fk_response_admin FOREIGN KEY (AdminId) REFERENCES Admin(id) ON DELETE CASCADE
+    ResponseBy VARCHAR(50) NOT NULL,
+    ResponseAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
+    Status VARCHAR(50) DEFAULT 'pending',
+    Stage VARCHAR(50) NOT NULL,
+    attachment TEXT, --it can be null
+    redirect VARCHAR(50),
+    Date TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
+    CONSTRAINT fk_response_grievance FOREIGN KEY (Issuse_Id) REFERENCES Grievance(id) ON DELETE CASCADE
 );
 
 --Create GrievanceHistory table
 CREATE TABLE GrievanceHistory (
+    Id SERIAL PRIMARY KEY,
+    Issuse_Id INTEGER NOT NULL,
+    from_status VARCHAR(50) NOT NULL,
+    to_status VARCHAR(50) NOT NULL,
+    action_by VARCHAR(50) NOT NULL,
+    stage_type VARCHAR(50) NOT NULL,
+    Note TEXT,
+    DATE TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
+    CONSTRAINT fk_history_grievance FOREIGN KEY (Issuse_Id) REFERENCES Grievance(id) ON DELETE CASCADE
+);
+
+-- Create Attachment table
+CREATE TABLE Attachment (
     id SERIAL PRIMARY KEY,
-    GrievanceId INTEGER NOT NULL,
-    Status VARCHAR(50) NOT NULL,
+    Issuse_Id INTEGER NOT NULL,
+    FileName VARCHAR(255) NOT NULL,
+    FilePath VARCHAR(255) NOT NULL,
+    UploadedBy VARCHAR(50) NOT NULL,
+    UploadedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
+    CreatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
     UpdatedAt TIMESTAMP DEFAULT (NOW() AT TIME ZONE 'Asia/Kolkata'),
-    CONSTRAINT fk_history_grievance FOREIGN KEY (GrievanceId) REFERENCES Grievance(id) ON DELETE CASCADE
+    CONSTRAINT fk_attachment_grievance FOREIGN KEY (Issuse_Id) REFERENCES Grievance(id) ON DELETE CASCADE
 );
 
 
