@@ -4,7 +4,7 @@ export interface GrievanceHistory {
   from_status: string;
   to_status: string;
   action_by: string;
-  action_type: 'RAISED' | 'FORWARDED' | 'STATUS_UPDATED' | 'CLOSED';
+  stage_type: 'RAISED' | 'FORWARDED' | 'STATUS_UPDATED' | 'CLOSED';
   note?: string;
-  date_time: number;
+  date_time: Date;
 }

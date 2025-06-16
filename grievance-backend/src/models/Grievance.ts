@@ -6,6 +6,6 @@ export interface Grievance {
   description: string;
   issue_type: string;
   attachment: boolean;
-  date_time: number;
+  date_time: Date;
   status: 'PENDING' | 'IN_PROGRESS' | 'RESOLVED' | 'CLOSED';
 }

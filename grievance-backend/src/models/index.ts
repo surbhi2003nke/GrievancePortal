@@ -4,3 +4,4 @@ export * from './Attachment';
 export * from './PersonalInfo';
 export * from './AdminInfo';
 export * from './AcademicInfo';
+export * from './Response';
