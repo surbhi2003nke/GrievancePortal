@@ -1,5 +1,6 @@
 export interface AdminInfo{
     id?: number;
+    Adminid?: number;
     name: string;
     email: string;
     phone?: string;

@@ -1,6 +1,6 @@
 export interface GrievanceHistory {
   id: string;
-  grievance_id: string;
+  issue_id: string;
   from_status: string;
   to_status: string;
   action_by: string;
