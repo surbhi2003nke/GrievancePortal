@@ -9,12 +9,3 @@ export interface AcademicInfo {
   CreatedAt?: Date;
   UpdatedAt?: Date;
 }
-
-export interface CreateAcademicInfoData {
-  RollNo: string;
-  ProgramId: number;
-  AcademicYear: string;
-  Term: number;
-  CampusId: number;
-  Batch: number;
-}
