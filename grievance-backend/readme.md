@@ -2,11 +2,18 @@
 //authication - erp copy + modified +api -  
 {
 --required before user auth
-->Queries
-->Service[email,otpgenerator,otpService,database]
-->timeutilis
-->otpconstants
-->models[personalinfo]
+->Queries -✅
+->Service[email - [id] ,otpgenerator,otpService,database]-✅
+->timeutilis -✅
+->otpconstants -✅
+->models[personalinfo]-✅
+
+devansh
+{route is also update untill now for user 
+just setup it in app.ts of root folder then check and test it 
+}
+
+for admin part change - sample admin data
 }
 //grivance user part 
 //admin side ready 
