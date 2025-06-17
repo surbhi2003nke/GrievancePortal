@@ -1,4 +1,4 @@
-export const STATUS = ['PENDING', 'IN_PROGRESS', 'RESOLVED', 'REJECTED', 'CLOSED'] as const;
+export const STATUS = ['PENDING', 'IN_PROGRESS', 'RESOLVED', 'REJECTED', 'RETURN',] as const;
 export type Status = typeof STATUS[number];
 
 export const PRIORITY = ['LOW', 'MEDIUM', 'HIGH', 'CRITICAL'] as const;
