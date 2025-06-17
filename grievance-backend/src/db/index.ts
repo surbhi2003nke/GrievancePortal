@@ -6,10 +6,10 @@ import { config } from "dotenv";
 config();
 
 const pool = new Pool({
-    user: process.env.PGUSER || "postgres",
-    host: process.env.PGHOST || "localhost",
-    database: process.env.PGDATABASE || "mydb",
-    password: process.env.PGPASSWORD || "password",
+    user: process.env.PGUSER ,
+    host: process.env.PGHOST ,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD ,
     port: Number(process.env.PGPORT) || 10184,
     ssl: { rejectUnauthorized: false },
 });
